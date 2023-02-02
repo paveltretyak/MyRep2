@@ -4,8 +4,17 @@
 <body>
 
   <script>
-    let money = +prompt ('Ваш бюджет на месяц?');
-    let time = prompt ('Введите дату в формате YYYY-MM-DD');
+    let money;
+    let time;
+
+    function start() {
+      money = +prompt ('Ваш бюджет на месяц?');
+      time = prompt ('Введите дату в формате YYYY-MM-DD');
+      while (isNaN(money) || money == '' || money == null) {
+        money = +prompt ('Ваш бюджет на месяц?');
+      }
+    };
+    start();
     
     let timeData = {
         budget: money,
@@ -13,7 +22,7 @@
         expenses: {},
         optionalExpenses: {},
         income: [],
-        savings: false
+        savings: true
     };
     /*
     let i = 0;
@@ -50,8 +59,8 @@
     }
     while (i < 2);
     */
-    
-    for (let i = 0; i < 2; i++) {
+    function chooseExpenses() {
+      for (let i = 0; i < 2; i++) {
       let a = prompt ('Введите обязательную статью расходов в этом месяце', '');
       let b = prompt ('Во сколько обойдется?', '');
 
@@ -63,13 +72,18 @@
         alert ('Введите корректные данные!');
         i = 0;
       }
+    }
     };
+    chooseExpenses();
     
+    function detectDayBudget() {
+      timeData.moneyPerDay = (money/30).toFixed();
+      alert ('Ваш бюджет на 1 день = ' + timeData.moneyPerDay);
+    };
+    detectDayBudget();
     
-    timeData.moneyPerDay = money/30
-    alert ('Ваш бюджет на 1 день = ' + timeData.moneyPerDay);
-
-    if (timeData.moneyPerDay < 1000) {
+    function detectLevel() {
+      if (timeData.moneyPerDay < 1000) {
       console.log ('Минимальный уровень достатка');
     } else if (timeData.moneyPerDay <= 2000) {
       console.log ('Средний уровень достатка');
@@ -78,6 +92,26 @@
     } else {
       console.log ('Произошла ошибка');
     }
+    };
+    detectLevel();
+
+    function chooseOptExpenses() {
+      for (let i = 1; i <= 3 ; i++) {
+        let q = prompt ('Статья необязательных расходов?');
+        timeData.optionalExpenses[i] = q;
+      }
+    };
+    chooseOptExpenses();
+
+    function checkSavings() {
+      if (timeData.savings == true) {
+        let save = +prompt('Какова сумма накоплений?');
+        let percent = +prompt('Под какой процент?');
+        timeData.monthIncome = (save/100/10) * percent;
+        alert('Доход в месяц с вашего депозита: ' + timeData.monthIncome);
+      }
+    };
+    checkSavings();
   </script>
 
 </body>
