@@ -1,0 +1,85 @@
+<!DOCTYPE HTML>
+<html>
+
+<body>
+
+  <script>
+    let money = +prompt ('Ваш бюджет на месяц?');
+    let time = prompt ('Введите дату в формате YYYY-MM-DD');
+    
+    let timeData = {
+        budget: money,
+        timeData: time,
+        expenses: {},
+        optionalExpenses: {},
+        income: [],
+        savings: false
+    };
+    /*
+    let i = 0;
+    while (i < 2) {
+      let a = prompt ('Введите обязательную статью расходов в этом месяце', '');
+      let b = prompt ('Во сколько обойдется?', '');
+      i++;
+
+      if ( (typeof(a)) === 'string' && (typeof(a)) != null && (typeof(b)) != null
+      && a != '' && b != '' && a.length < 50) {
+        console.log('done');
+        timeData.expenses[a] = b;
+      } else {
+        alert ('Введите корректные данные!');
+        i = 0;
+      }
+
+    };
+    
+    
+    let i = 0;
+    do {
+      let a = prompt ('Введите обязательную статью расходов в этом месяце', '');
+      let b = prompt ('Во сколько обойдется?', '');
+      if ( (typeof(a)) === 'string' && (typeof(a)) != null && (typeof(b)) != null
+      && a != '' && b != '' && a.length < 50) {
+        console.log('done');
+        timeData.expenses[a] = b;
+      } else {
+        alert ('Введите корректные данные!');
+        i = 0;
+      }
+      i++;
+    }
+    while (i < 2);
+    */
+    
+    for (let i = 0; i < 2; i++) {
+      let a = prompt ('Введите обязательную статью расходов в этом месяце', '');
+      let b = prompt ('Во сколько обойдется?', '');
+
+      if ( (typeof(a)) === 'string' && (typeof(a)) != null && (typeof(b)) != null
+      && a != '' && b != '' && a.length < 50) {
+        console.log('done');
+        timeData.expenses[a] = b;
+      } else {
+        alert ('Введите корректные данные!');
+        i = 0;
+      }
+    };
+    
+    
+    timeData.moneyPerDay = money/30
+    alert ('Ваш бюджет на 1 день = ' + timeData.moneyPerDay);
+
+    if (timeData.moneyPerDay < 1000) {
+      console.log ('Минимальный уровень достатка');
+    } else if (timeData.moneyPerDay <= 2000) {
+      console.log ('Средний уровень достатка');
+    } else if (timeData.moneyPerDay > 3000) {
+      console.log ('Высокий уровень достатка');
+    } else {
+      console.log ('Произошла ошибка');
+    }
+  </script>
+
+</body>
+
+</html>
