@@ -1,0 +1,25 @@
+table {
+    width: 90%;
+    border: 1px solid grey;
+    border-collapse: collapse;
+}
+.answer {
+    width: 98%;
+}
+td,th {
+    border: 1px solid gray;
+    text-align: center;
+}
+.logo, .name {
+    text-align: center;
+    font-weight: bold;
+}
+.radio {
+    width: 1em; height: 1em;
+    border: 0.125em solid black;
+    text-indent: 15px;
+}
+.radio:checked {
+    color: darkgreen;
+    background-color: darkgreen;
+}
